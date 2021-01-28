@@ -1,0 +1,22 @@
+main {
+  min-height: 80vh;
+}
+h3 {
+  padding-top: 0.5rem;
+}
+
+.cartTitle {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.subTitle {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+.rating span {
+  margin: 0rem;
+}
+.ratetext {
+  padding: 0.5rem;
+}

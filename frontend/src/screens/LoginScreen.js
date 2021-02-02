@@ -12,7 +12,7 @@ const LoginScreen = ({history,location}) => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     
-    const redirect = location.serach ? location.search.split('=')[1] :'/'
+    const redirect = location.search ? location.search.split('=')[1] : '/'
     const dispatch =useDispatch()
     const userLogin = useSelector(state => state.userLogin)
     const { loading,error,userInfo} = userLogin

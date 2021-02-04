@@ -31,6 +31,28 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Route render={({history}) => <SearchBox history={history}/>} />
 
+                        <Nav className='ml-auto'>
+                        <LinkContainer to='/category/Whisky/'>
+                                <Nav.Link>
+                                    <i className="fa fa-glass-whiskey"></i>Whisky</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/category/Beer/'>
+                                <Nav.Link>
+                                    <i className="fa fa-beer"></i>Beer</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/category/Red Wine/'>
+                                <Nav.Link>
+                                    <i className="fa fa-wine-glass"></i>Red Wine</Nav.Link>
+                        </LinkContainer>
+
+                        </Nav>
+                    
+
+
+
+
+
+
                         <Nav className="ml-auto">
                             <LinkContainer to='/cart'>
                                 <Nav.Link>

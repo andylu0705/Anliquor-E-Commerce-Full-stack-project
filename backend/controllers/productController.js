@@ -154,6 +154,8 @@ const createProductReview = asyncHandler(async(req,res) =>{
 // @access Public
 
 const getTopProducts = asyncHandler(async(req,res) =>{
+    
+
     const products = await Product.find({}).sort({rating: -1}).limit(3)
 
     res.json(products)
@@ -161,4 +163,25 @@ const getTopProducts = asyncHandler(async(req,res) =>{
 })
 
 
-export{ getProducts, getProductById,deleteProduct,createProduct,updateProduct,createProductReview,getTopProducts}
+
+// @des Fetch  products by category
+// @route Get /api/products/category/:id
+// @access Public
+
+const getProductByCategory = asyncHandler(async(req,res) =>{
+    const pageSize = 8
+    const page = Number(req.query.pageNumber) || 1
+    
+    const count = await Product.countDocuments({category: req.params.id})
+    const products = await Product.find({category: req.params.id}).limit(pageSize).skip(pageSize * (page -1))
+    if (products){
+        res.json({products,page, pages: Math.ceil(count / pageSize)})}
+    else{
+        res.status(404)
+        throw new Error('Product not found')
+    }
+
+})
+
+
+export{ getProducts, getProductById,deleteProduct,createProduct,updateProduct,createProductReview,getTopProducts,getProductByCategory}

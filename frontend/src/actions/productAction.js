@@ -20,6 +20,9 @@ import {PRODUCT_LIST_REQUEST,
         PRODUCT_TOP_REQUEST,
         PRODUCT_TOP_SUCCESS,
         PRODUCT_TOP_FAIL,
+        PRODUCT_CATEGORY_REQUEST,
+        PRODUCT_CATEGORY_SUCCESS,
+        PRODUCT_CATEGORY_FAIL,
     } from '../constants/productConsants'
 
     //add dispatch function within listproducts
@@ -215,3 +218,20 @@ export const listTopProducts =() => async (dispatch) => {
           error.response.data.message: error.message
       })
   }}
+
+
+  export const listProductCategory =(category = '', pageNumber='') => async (dispatch) => {
+    try{
+        dispatch({type: PRODUCT_CATEGORY_REQUEST})
+        const {data} = await axios.get (`/api/products/category/${category}?pageNumber=${pageNumber}`)
+        dispatch({type: PRODUCT_CATEGORY_SUCCESS,
+                  payload: data           
+        }) 
+    } catch (error) {
+        dispatch({
+            type:PRODUCT_CATEGORY_FAIL,
+            payload: error.response && error.response.data.message ? 
+            error.response.data.message: error.message
+        })
+    }
+}
